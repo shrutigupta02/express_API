@@ -25,9 +25,8 @@ db.connect((err) => {
 
 //CREATE ROUTE
 app.post('/add', (req, res) => {
-    const query = 'INSERT INTO userdata (`first_name`, `last_name`, `email`, `password`, `number`) VALUES (?)';
+    const query = 'INSERT INTO assignment (`first_name`, `last_name`, `email`, `password`, `number`) VALUES (?)';
     const values = [
-        uuidv4(),
         req.body.first_name,
         req.body.last_name,
         req.body.email,
