@@ -56,54 +56,54 @@ export default function Register() {
     };
 
     return (
-        <div>
-            <h2>Register New User</h2>
-            <form onSubmit={handleSubmit}>
-                <input
-                    type="text"
-                    name="firstName"
-                    placeholder="First Name"
-                    value={values.firstName}
-                    onChange={handleChange}
-                    required
-                />
-                <input
-                    type="text"
-                    name="lastName"
-                    placeholder="Last Name"
-                    value={values.lastName}
-                    onChange={handleChange}
-                    required
-                />
-                <input
-                    type="email"
-                    name="email"
-                    placeholder="Email"
-                    value={values.email}
-                    onChange={handleChange}
-                    required
-                />
-                <input
-                    type="password"
-                    name="password"
-                    placeholder="Password"
-                    value={values.password}
-                    onChange={handleChange}
-                    required
-                />
-                <input
-                    type="text"
-                    name="number"
-                    placeholder="Phone Number"
-                    value={values.number}
-                    onChange={handleChange}
-                    required
-                />
-                <button type="submit">Register</button>
-            </form>
-            {message && <p>{message}</p>}
-            <p>Already a user?</p>
-            <p style={{cursor:'pointer', textDecoration: 'underline'}} onClick={()=> navigate('/login')}> Login here</p>
-        </div>
+        <div className="register">
+        <h2>Register New User</h2>
+        <form onSubmit={handleSubmit}>
+            <input
+                type="text"
+                name="firstName"
+                placeholder="First Name"
+                value={values.firstName}
+                onChange={handleChange}
+                required
+            />
+            <input
+                type="text"
+                name="lastName"
+                placeholder="Last Name"
+                value={values.lastName}
+                onChange={handleChange}
+                required
+            />
+            <input
+                type="email"
+                name="email"
+                placeholder="Email"
+                value={values.email}
+                onChange={handleChange}
+                required
+            />
+            <input
+                type="password"
+                name="password"
+                placeholder="Password"
+                value={values.password}
+                onChange={handleChange}
+                required
+            />
+            <input
+                type="text"
+                name="number"
+                placeholder="Phone Number"
+                value={values.number}
+                onChange={handleChange}
+                required
+            />
+            <button type="submit">Register</button>
+        </form>
+        {message && <p>{message}</p>}
+        <p>Already a user?</p>
+        <p className="login-link" onClick={() => navigate('/login')}>Login here</p>
+    </div>
     );
 }

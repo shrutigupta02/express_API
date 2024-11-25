@@ -14,8 +14,17 @@ function Navbar({ isAuthenticated, setIsAuthenticated }) {
     };
 
     return (
-        <nav>
-            {isAuthenticated && <button onClick={handleLogout}>Logout</button>}
+        <nav className="navbar">
+            {isAuthenticated && (
+                <div>
+                    <button className="logout-button" onClick={handleLogout}>
+                        Logout
+                    </button>
+                    <button className="logout-button" onClick={()=> navigate('/profile')}>
+                        View Profile
+                    </button>
+                </div>
+            )}
         </nav>
     );
 }

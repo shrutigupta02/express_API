@@ -30,7 +30,7 @@ export default function Login({ setIsAuthenticated }) {
             if (response.ok) {
                 setMessage('Login successful!');
                 setIsAuthenticated(true);  // Update parent state to true
-                navigate('/profile'); // Redirect to profile page
+                navigate('/home'); // Redirect to profile page
             } else {
                 setMessage(data.error); // Display error message from backend
             }
@@ -41,26 +41,26 @@ export default function Login({ setIsAuthenticated }) {
     };
 
     return (
-        <div>
-            <h2>Login</h2>
-            <form onSubmit={handleSubmit}>
-                <input
-                    type="email"
-                    placeholder="Email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    required
-                />
-                <input
-                    type="password"
-                    placeholder="Password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    required
-                />
-                <button type="submit">Login</button>
-            </form>
-            {message && <p>{message}</p>}
-        </div>
+        <div className="login">
+        <h2>Login</h2>
+        <form onSubmit={handleSubmit}>
+            <input
+                type="email"
+                placeholder="Email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+            />
+            <input
+                type="password"
+                placeholder="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+            />
+            <button type="submit">Login</button>
+        </form>
+        {message && <p>{message}</p>}
+    </div>
     );
 }

@@ -1,42 +1,161 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f7fc;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.register {
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.register h2 {
   text-align: center;
+  color: #333;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.register form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.register input {
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  outline: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.register input:focus {
+  border-color: #007bff;
 }
 
-.card {
-  padding: 2em;
+.register button {
+  padding: 10px;
+  font-size: 16px;
+  color: white;
+  background-color: #007bff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-.read-the-docs {
-  color: #888;
+.register button:hover {
+  background-color: #0056b3;
+}
+
+.register p {
+  text-align: center;
+  color: #555;
+}
+
+.register .login-link {
+  text-align: center;
+  color: #007bff;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.register .login-link:hover {
+  color: #0056b3;
+}
+
+.login {
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.login h2 {
+  text-align: center;
+  color: #333;
+}
+
+.login form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.login input {
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  outline: none;
+}
+
+.login input:focus {
+  border-color: #007bff;
+}
+
+.login button {
+  padding: 10px;
+  font-size: 16px;
+  color: white;
+  background-color: #007bff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.login button:hover {
+  background-color: #0056b3;
+}
+
+.login p {
+  text-align: center;
+  color: #555;
+}
+
+/* Navbar Styling */
+.navbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 20px;
+}
+
+.navbar button {
+  background-color: #007bff;
+  color: white;
+  font-size: 12px;
+  padding: 5px 10px;
+  margin: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.navbar button:hover {
+  background-color: #0056b3;
+}
+
+.navbar button:focus {
+  outline: none;
+}
+
+.navbar .logout-button {
+  font-weight: bold;
+}
+
+.home{
+  color: #0056b3;
+  text-align: center;
 }
