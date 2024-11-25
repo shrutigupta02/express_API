@@ -1,14 +1,14 @@
 const express = require('express');
 const mysql = require('mysql2');
-const session = require('express-session'); // Import express-session
+const session = require('express-session');
 const bodyParser = require('body-parser');
-const cors = require('cors'); // For enabling CORS
+const cors = require('cors'); 
 const app = express();
 
-// Middleware for CORS (allow requests from your React frontend)
+// Middleware for CORS
 app.use(cors({
-    origin: 'http://localhost:5173', // Your React app URL
-    credentials: true,  // Allow cookies to be sent along with the request
+    origin: 'http://localhost:5173',
+    credentials: true,
 }));
 
 // Middleware for parsing JSON bodies
@@ -17,14 +17,15 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // Configure express-session
 app.use(session({
-    secret: 'your-secret-key',  // Change this to a secret key
+    secret: 'abcdef',
     resave: false,
     saveUninitialized: true,
     cookie: {
         httpOnly: true,
-        secure: false,  // Set to true if you're using HTTPS
+        secure: false,
     },
 }));
+
 // MySQL Database Connection
 const db = mysql.createConnection({
     host: 'localhost',
@@ -94,66 +95,6 @@ app.post('/add', (req, res) => {
 
         res.status(200).json({ message: 'User registered successfully' });
     });
-});
-
-// Assuming you are using Express.js
-
-// Route to get user profile
-// Example of setting the session data after login
-app.post('/auth/login', (req, res) => {
-    const { email, password } = req.body;
-
-    // Check user credentials (using a database query)
-    const user = getUserByEmailAndPassword(email, password); // Replace with actual logic
-
-    if (user) {
-        req.session.user = { id: user.id, email: user.email };  // Set session data
-        return res.json({ message: 'Login successful!' });
-    } else {
-        return res.status(401).json({ error: 'Invalid credentials' });
-    }
-});
-
-app.get('/user/profile', (req, res) => {
-    if (!req.session.user) {
-        return res.status(401).json({ error: 'User not authenticated' }); // Return 401 if not authenticated
-    }
-
-    // Fetch user profile from database (use session data to find user)
-    const user = getUserById(req.session.user.id);  // Replace with actual DB query
-
-    if (user) {
-        res.json(user);  // Return the user data
-    } else {
-        res.status(404).json({ error: 'User not found' });
-    }
-});
-
-
-// Route to update user profile
-app.put('/user/profile', (req, res) => {
-    if (!req.session.user) {
-        return res.status(401).json({ error: 'User not authenticated' });
-    }
-    // Update user profile in database (e.g., MySQL)
-    const { firstName, lastName, email, number } = req.body;
-    updateUserProfile(req.session.user.id, { firstName, lastName, email, number });  // Replace with actual DB call
-    res.json({ message: 'Profile updated successfully' });
-});
-
-// Route to change password
-app.put('/user/change-password', (req, res) => {
-    if (!req.session.user) {
-        return res.status(401).json({ error: 'User not authenticated' });
-    }
-    const { oldPassword, newPassword } = req.body;
-    // Verify old password, change to new password in DB
-    const success = changePassword(req.session.user.id, oldPassword, newPassword); // Replace with actual DB call
-    if (success) {
-        res.json({ message: 'Password changed successfully' });
-    } else {
-        res.status(400).json({ error: 'Failed to change password' });
-    }
 });
 
 

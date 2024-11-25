@@ -102,6 +102,8 @@ export default function Register() {
                 <button type="submit">Register</button>
             </form>
             {message && <p>{message}</p>}
+            <p>Already a user?</p>
+            <p style={{cursor:'pointer', textDecoration: 'underline'}} onClick={()=> navigate('/login')}> Login here</p>
         </div>
     );
 }
