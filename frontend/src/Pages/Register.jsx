@@ -1,6 +1,7 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-export default function Login() {
+export default function Register() {
     const [values, setValues] = useState({
         firstName: '',
         lastName: '',
@@ -9,8 +10,9 @@ export default function Login() {
         number: ''
     });
     const [message, setMessage] = useState('');
+    const navigate = useNavigate();
 
-    //handle form submission
+    // handle form submission
     const handleSubmit = async (e) => {
         e.preventDefault();
 
@@ -23,20 +25,20 @@ export default function Login() {
         };
 
         try {
-            // Make a POST request to the /add route
             const response = await fetch('http://localhost:1234/add', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(userData),
+                body: JSON.stringify(userData), // Ensure it's stringified
             });
 
             const data = await response.json();
             if (response.ok) {
-                setMessage(data.message); // Show success message
+                setMessage(data.message);
+                navigate('/profile');
             } else {
-                setMessage(data.error); // Show error message
+                setMessage(data.error);
             }
         } catch (error) {
             console.error('Error:', error);
